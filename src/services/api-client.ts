@@ -1,11 +1,17 @@
 import axios from "axios";
 
-interface FetchCountry {
-    name: string;
+export interface FetchCountry {
+    name: {
+        common: string;
+        official: string;
+    }
     capital: string;
     region: string;
     population: number;
-    flag: string;
+    flags: {
+        png: string;
+        svg: string;
+    }
 }
 
 const axiosInstance = axios.create({
@@ -21,7 +27,7 @@ class APIClient {
 
     getAll = () => {
       return axiosInstance
-        .get<FetchCountry>(this.endpoint)
+        .get<FetchCountry[]>(this.endpoint)
         .then(res => res.data)
     }
 }

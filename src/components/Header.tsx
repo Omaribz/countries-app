@@ -7,7 +7,7 @@ const Header = () => {
       display="flex"
       justifyContent="space-between"
       paddingY="15px"
-      paddingX="60px"
+      paddingX="80px"
       fontSize="18px"
       fontWeight={500}
       backgroundColor="#2B3844"

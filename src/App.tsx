@@ -2,7 +2,7 @@ import { Grid, GridItem, HStack } from "@chakra-ui/react";
 import Header from "./components/Header";
 import SearchInput from "./components/SearchInput";
 import RegionSelector from "./components/RegionSelector";
-import CountriesCard from "./components/CountriesCard";
+import CountriesGrid from "./components/CountriesGrid";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         </HStack>
       </GridItem>
       <GridItem area="main">
-        <CountriesCard />
+        <CountriesGrid />
       </GridItem>
     </Grid>
   );

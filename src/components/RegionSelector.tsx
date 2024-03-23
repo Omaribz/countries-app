@@ -7,7 +7,7 @@ const RegionSelector = () => {
       <MenuButton
         as={Button}
         rightIcon={<BsChevronDown />}
-        marginRight="60px"
+        marginRight="80px"
         bg="#2B3844"
         _hover={{ bg: "#2B3844" }}
         width="220px"

@@ -6,7 +6,7 @@ const SearchInput = () => {
     <InputGroup
       marginY="40px"
       width="30%"
-      marginLeft="60px"
+      marginLeft="80px"
       backgroundColor="#2B3844"
     >
       <InputLeftElement children={<BsSearch />} />
