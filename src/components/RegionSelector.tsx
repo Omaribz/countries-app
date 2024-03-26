@@ -8,13 +8,13 @@ const RegionSelector = () => {
         as={Button}
         rightIcon={<BsChevronDown />}
         marginRight="80px"
-        bg="#2B3844"
-        _hover={{ bg: "#2B3844" }}
+        // bg="#2B3844"
+        // _hover={{ bg: "#2B3844" }}
         width="220px"
       >
         Filter by Region
       </MenuButton>
-      <MenuList bg="#2B3844">
+      <MenuList>
         <MenuItem>Africa</MenuItem>
         <MenuItem>America</MenuItem>
         <MenuItem>Asia</MenuItem>
