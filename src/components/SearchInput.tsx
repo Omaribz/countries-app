@@ -1,7 +1,20 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
-const SearchInput = () => {
+interface SearchInputProps {
+  onSearch: (searchText: string) => void;
+}
+
+const SearchInput = ({ onSearch }: SearchInputProps) => {
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSearch = () => {
+    if (searchInputRef.current) {
+      const searchText = searchInputRef.current.value.trim();
+      onSearch(searchText);
+    }
+  };
   return (
     <InputGroup
       marginY="40px"
@@ -14,6 +27,8 @@ const SearchInput = () => {
         variant="outline"
         placeholder="Search for a country..."
         fontSize="14px"
+        ref={searchInputRef}
+        onChange={handleSearch}
         // _placeholder={{ opacity: 1, color: "#fff" }}
       />
     </InputGroup>
