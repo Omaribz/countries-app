@@ -29,7 +29,7 @@ const axiosInstance = axios.create({
     baseURL: "https://restcountries.com/v3.1"
 })
 
-class APIClient<FetchCountry> {
+class APIClient{
     endpoint: string;
 
     constructor(endpoint:string) {
@@ -38,7 +38,7 @@ class APIClient<FetchCountry> {
 
     getAll = (config: AxiosRequestConfig) => {
       return axiosInstance
-        .get<FetchCountry[]>(this.endpoint, config)
+        .get(this.endpoint, config)
         .then(res => res.data)
     }
 
