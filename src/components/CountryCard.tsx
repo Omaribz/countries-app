@@ -13,13 +13,14 @@ const CountryCard = ({ country }: CountryProps) => {
         width="264px"
         height="336px"
         overflow="hidden"
+        margin="auto"
         marginBottom="60px"
         _hover={{
           transform: "scale(1.03)",
           transition: "transform .15s ease-in",
         }}
       >
-        <Image src={country.flags.png} objectFit="cover" height="55%" />
+        <Image src={country.flags.png} height="55%" width="100%" />
         <CardBody>
           <Text marginBottom="10px" fontWeight={700}>
             {country.name.common}

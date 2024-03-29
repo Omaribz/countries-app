@@ -10,6 +10,7 @@ import {
   Heading,
   Image,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 
 const CountryDetailPage = () => {
@@ -18,79 +19,155 @@ const CountryDetailPage = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <Button
-        marginY="60px"
-        marginLeft="80px"
-        width="136px"
-        height="40px"
-        boxShadow="md"
-        onClick={() => navigate("/")}
-      >
-        <HStack>
-          <MdKeyboardBackspace />
-          <Text>Back</Text>
-        </HStack>
-      </Button>
-      <Container maxW="100%" paddingLeft="80px">
-        <Flex>
+    <Container maxW="90%">
+      <Flex>
+        <Button
+          marginY="60px"
+          width={{ base: "100px", lg: "136px" }}
+          height="40px"
+          boxShadow="md"
+          onClick={() => navigate("/")}
+        >
+          <HStack>
+            <MdKeyboardBackspace />
+            <Text>Back</Text>
+          </HStack>
+        </Button>
+      </Flex>
+      {data && (
+        <Flex
+          flexDirection={{
+            base: "column",
+            sm: "column",
+            md: "row",
+            lg: "row",
+          }}
+        >
           <Image
             src={data[0].flags.png}
-            width="560px"
-            height="350px"
+            width={{ base: "300px", lg: "560px" }}
+            height={{ base: "auto", sm: "auto", md: "401px", lg: "401px" }}
             borderRadius="7px"
+            marginRight={{ base: 0, sm: "0", md: "50px", lg: "80px" }}
           />
-          <Container
-            marginLeft="100px"
-            width="574px"
-            height="323px"
-            paddingTop="30px"
+          <Box
+          // marginLeft="100px"
+          // width="574px"
+          // height="323px"
+          // paddingTop="30px"
           >
-            <Heading fontSize="25px">{data && data[0].name.common}</Heading>
+            <Box paddingTop="30px">
+              <Heading fontSize="25px">{data[0].name.common}</Heading>
+            </Box>
             <Box
               fontSize="13px"
               fontWeight={250}
               lineHeight={2}
               letterSpacing={0.2}
             >
-              <HStack>
-                <Box width="207px" height="160px" marginRight="100px">
-                  <Text>
-                    <strong>Native Name:</strong> {data[0].name.common}
-                  </Text>
-                  <Text>
-                    <strong>Population:</strong> {data[0].population}
-                  </Text>
-                  <Text>
-                    <strong>Region:</strong> {data[0].region}
-                  </Text>
-                  <Text>
-                    <strong>Sub-region:</strong> {data[0].subregion}
-                  </Text>
-                  <Text>
-                    <strong>Capital:</strong> {data[0].capital}
-                  </Text>
-                </Box>
-                <Box width="249px" height="196px" marginTop="35px">
-                  <Text>
-                    <strong>Top Level Domain:</strong> {data[0].tld}
-                  </Text>
-                  <Text>
-                    <strong>Currencies:</strong> {data[0].currencies.EURO}
-                  </Text>
-                  <Text>
-                    <strong>Languages:</strong> {data[0].languages.ell}
-                  </Text>
-                </Box>
-              </HStack>
+              <Flex
+                flexDirection={{
+                  base: "column",
+                  sm: "column",
+                  md: "row",
+                  lg: "row",
+                }}
+              >
+                <VStack alignItems="flex-start">
+                  <Box
+                    width="207px"
+                    height={{
+                      base: "auto",
+                      sm: "auto",
+                      md: "196px",
+                      lg: "160px",
+                    }}
+                    marginRight="100px"
+                    // marginLeft={{ base: "50px", sm: "50px", md: "0", lg: "0" }}
+                    marginTop="20px"
+                  >
+                    <Text>
+                      <strong>Native Name:</strong>{" "}
+                      {Object.keys(data[0].name.nativeName)[0]}
+                    </Text>
+                    <Text>
+                      <strong>Population:</strong> {data[0].population}
+                    </Text>
+                    <Text>
+                      <strong>Region:</strong> {data[0].region}
+                    </Text>
+                    <Text>
+                      <strong>Sub-region:</strong> {data[0].subregion}
+                    </Text>
+                    <Text>
+                      <strong>Capital:</strong> {data[0].capital}
+                    </Text>
+                  </Box>
+                </VStack>
+                <VStack alignItems="flex-start">
+                  <Box
+                    width="249px"
+                    height={{
+                      base: "auto",
+                      sm: "auto",
+                      md: "196px",
+                      lg: "196px",
+                    }}
+                    marginTop="20px"
+                    alignItems={"flex-start"}
+                    marginBottom="30px"
+                  >
+                    <Text>
+                      <strong>Top Level Domain:</strong> {data[0].tld}
+                    </Text>
+                    <Text>
+                      <strong>Currencies:</strong>{" "}
+                      {
+                        data[0].currencies[Object.keys(data[0].currencies)[0]]
+                          .name
+                      }
+                    </Text>
+                    <Text>
+                      <strong>Languages:</strong>{" "}
+                      {Object.values(data[0].languages).join(", ")}
+                    </Text>
+                  </Box>
+                </VStack>
+              </Flex>
             </Box>
-            <Text>
-              <strong>Border Countries:</strong> {data[0].languages.ell}
-            </Text>
-          </Container>
+            {data[0].borders && (
+              <Text marginRight="10px" fontWeight={500} marginBottom="10px">
+                Border countries:{" "}
+              </Text>
+            )}
+            <Flex
+              flexDirection="row"
+              justifyContent="space-between"
+              flexWrap="wrap"
+              marginBottom="20px"
+            >
+              {data[0].borders &&
+                data[0].borders.map((border: string) => {
+                  return (
+                    <Box
+                      key={border}
+                      boxShadow="lg"
+                      marginRight="5px"
+                      paddingTop="5px"
+                      paddingBottom="5px"
+                      paddingLeft="20px"
+                      paddingRight="20px"
+                      borderRadius="5px"
+                    >
+                      {border}
+                    </Box>
+                  );
+                })}
+            </Flex>
+          </Box>
         </Flex>
-      </Container>
-    </>
+      )}
+    </Container>
   );
 };
 

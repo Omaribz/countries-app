@@ -17,10 +17,9 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
   };
   return (
     <InputGroup
-      marginY="40px"
-      width="30%"
-      marginLeft="80px"
-      // backgroundColor="#2B3844"
+      marginY="20px"
+      width={{ base: "90%", sm: "90%", md: "30%", lg: "30%" }}
+      marginLeft={{ base: "0", sm: "0", lg: "80px" }}
     >
       <InputLeftElement children={<BsSearch />} />
       <Input
@@ -29,7 +28,6 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
         fontSize="14px"
         ref={searchInputRef}
         onChange={handleSearch}
-        // _placeholder={{ opacity: 1, color: "#fff" }}
       />
     </InputGroup>
   );

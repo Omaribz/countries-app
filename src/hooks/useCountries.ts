@@ -5,7 +5,8 @@ const apiClient = new APIClient('/all')
 
 const useCountries = () => useQuery({
     queryKey: ['countries'],
-    queryFn: apiClient.getAll
+    queryFn: apiClient.getAll,
+    staleTime: 24 * 60 * 60 * 1000
 });
 
 export default useCountries;

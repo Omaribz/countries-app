@@ -29,7 +29,7 @@ const axiosInstance = axios.create({
     baseURL: "https://restcountries.com/v3.1"
 })
 
-class APIClient {
+class APIClient<FetchCountry> {
     endpoint: string;
 
     constructor(endpoint:string) {
