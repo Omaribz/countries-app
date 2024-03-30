@@ -22,8 +22,8 @@ const CountriesGrid = ({ searchValue, selectedRegion }: CountryProps) => {
   return (
     <SimpleGrid
       columns={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}
-      spacingX="74px"
-      paddingX={{ base: "40px", sm: "10px", lg: "80px" }}
+      spacingX={{ sm: "30px", md: "50px", lg: "74px" }}
+      paddingX={{ base: "40px", sm: "70px", lg: "80px" }}
     >
       {isPending &&
         skeletons.map((skeleton) => <SkeletonCard key={skeleton} />)}

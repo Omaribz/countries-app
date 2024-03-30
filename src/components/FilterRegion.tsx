@@ -6,7 +6,7 @@ export interface SearchCountryProps {
 }
 
 const FilterRegion = ({ setSelectedRegion }: SearchCountryProps) => {
-  const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
+  const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   const handleRegionChange = (region: string) => {
     setSelectedRegion(region);
@@ -17,8 +17,14 @@ const FilterRegion = ({ setSelectedRegion }: SearchCountryProps) => {
       <MenuButton
         as={Button}
         rightIcon={<BsChevronDown />}
-        marginRight={{ base: "150px", lg: "80px" }}
-        width={{ base: "50%", sm: "50%", md: "30%", lg: "18%", xl: "12%" }}
+        marginRight={{
+          base: "150px",
+          sm: "150px",
+          md: "90px",
+          lg: "50px",
+          xl: "80px",
+        }}
+        width={{ base: "50%", sm: "50%", md: "22%", lg: "18%", xl: "12%" }}
         marginBottom={{ base: "40px", lg: "0" }}
       >
         Filter by Region
